@@ -1,6 +1,8 @@
+import { View, Text } from "react-native";
+
 function Deck({ title, cards }) {
   return (
-      <View>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
         <Text>
           {title}
         </Text>
