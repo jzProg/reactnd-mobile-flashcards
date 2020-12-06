@@ -4,8 +4,13 @@ import Form from './Form';
 
 class NewDeck extends Component {
 
-  select = () => {
+  select = (title) => {
+    // TODO store new deck
+    this.toHome();
+  }
 
+  toHome = () => {
+    this.props.navigation.navigate('Decks');
   }
 
   render() {
