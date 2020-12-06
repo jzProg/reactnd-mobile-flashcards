@@ -4,19 +4,28 @@ import Form from './Form';
 
 class NewDeck extends Component {
 
-  select = (title) => {
+  state = {
+    inputs: [{ id: 'title', placeholder: 'deck title'}],
+    title: ''
+  }
+
+  onChange = (id, text) => {
+    this.setState({ [id]: text });
+  }
+
+  select = () => {
     // TODO store new deck
     this.toHome();
   }
 
   toHome = () => {
-    this.props.navigation.navigate('Decks');
+    this.props.navigation.navigate('DeckListView');
   }
 
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Form onSelect={this.select}/>
+        <Form inputs={this.state.inputs} onSubmit={this.select} onSelect={this.onChange}/>
      </View>
     )
   }

@@ -1,30 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { View, TextInput, Button } from "react-native";
 
-class Form extends Component {
-
-  state = {
-    input: 'new deck title'
-  }
-
-  onChangeText = (text) => {
-    this.setState({ input: text });
-  }
-
-  onSubmit = () => {
-    this.props.onSelect(this.state.input);
-  }
-
-  render() {
-    return (
+function Form({ inputs, onSubmit, onSelect }) {
+  return (
       <View>
-        <TextInput style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-                   value={this.state.input}
-                   onChangeText={text => this.onChangeText(text)}/>
-        <Button title="Submit" onPress={this.onSubmit}/>
+        { inputs.map(input => <TextInput key={input.id}
+                                         id={input.id}
+                                         onChangeText={(text) => onSelect(input.id, text)}
+                                         style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+                                         placeholder={input.placeholder}/>)}
+        <Button title="Submit" onPress={onSubmit}/>
       </View>
-      )
-  }
+    )
 }
 
 export default Form;
