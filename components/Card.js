@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Text } from "react-native";
+import { View, Text, Button } from "react-native";
 
-function Card({ showAnswer }) {
+function Card({ showAnswer, card, onFlip }) {
   return (
-    <View>
-      <Text>Card</Text>
-      <Text>{ showAnswer ? 'back' : 'front' }</Text>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start'}}>
+      <Text>{ !showAnswer ? card.question : card.answer }</Text>
+      <Button title={!showAnswer ? 'showAnswer' : 'showQuestion'} onPress={onFlip}></Button>
     </View>
     )
 }
