@@ -3,7 +3,7 @@ import { View, Text } from "react-native";
 import NewDeck from './components/NewDeck';
 import DeckList from './components/DeckListView';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator  } from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();
 
