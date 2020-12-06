@@ -52,7 +52,7 @@ export default class App extends React.Component {
         <NavigationContainer>
          <Tab.Navigator>
            <Tab.Screen name="Decks" component={HomeStackScreen} />
-           <Tab.Screen name="Add New Deck" component={NewDeck} />
+           <Tab.Screen name="Add New Deck" component={NewDeck}/>
          </Tab.Navigator>
        </NavigationContainer>
     );
