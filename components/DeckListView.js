@@ -4,13 +4,13 @@ import Deck from './Deck';
 
 class DeckListView extends Component {
    state ={
-     decks: [{ title: 'deck1', card: '3'}, { title: 'deck2', card: '0'}, { title: 'deck3', card: '2'}]
+     decks: [{ title: 'deck1', cards: '3'}, { title: 'deck2', cards: '0'}, { title: 'deck3', cards: '2'}]
    }
 
    render() {
      return (
        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        { this.state.decks.map(deck => <Deck title={deck.title} cards={deck.cards}></Deck>)}
+        { this.state.decks.map(deck => <Deck key={deck.title} title={deck.title} cards={deck.cards}></Deck>)}
       </View>
      )
    }

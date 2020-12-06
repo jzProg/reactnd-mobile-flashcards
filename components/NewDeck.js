@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
-import { View, Text } from "react-native";
+import { View } from "react-native";
+import Form from './Form';
 
 class NewDeck extends Component {
+
+  select = () => {
+
+  }
+
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-         <Text>
-          New deck
-        </Text>
+        <Form onSelect={this.select}/>
      </View>
     )
   }
