@@ -7,18 +7,27 @@ class Quiz extends Component {
   state = {
     showAnswer: false,
     currentQuestion: 0,
-    cards: [{ question: 'question1', answer: 'answer1'}, { question: 'question2', answer: 'answer2'}]
+    cards: [{ question: 'question1', answer: 'answer1'}, { question: 'question2', answer: 'answer2'}],
+    score: 0,
+  }
+
+  updateScore = (isCorrect) => {
+      const isLastRound = this.isLastRound();
+      this.setState((state, props) => ({
+        score: isCorrect ? state.score + 1 : state.score,
+        currentQuestion: !isLastRound ? this.state.currentQuestion + 1 : this.state.currentQuestion
+      }), () => {
+        if (isLastRound) {
+          this.toScore();
+        }});
+  }
+
+  isLastRound = () => {
+    return this.state.currentQuestion + 1 === this.state.cards.length;
   }
 
   answer = (isCorrect) => {
-    // TODO count score
-    if (this.state.currentQuestion + 1 < this.state.cards.length) {
-      this.setState((state, props) => ({
-        currentQuestion: state.currentQuestion + 1
-       }));
-    } else {
-      this.toScore();
-    }
+    this.updateScore(isCorrect);
   }
 
   flip = () => {
@@ -28,7 +37,7 @@ class Quiz extends Component {
   }
 
   toScore = () => {
-    this.props.navigation.navigate('Score'); // TODO new values
+    this.props.navigation.navigate('Score', { score: this.state.score });
   }
 
   render() {

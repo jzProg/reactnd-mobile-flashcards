@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text } from "react-native";
 
-function Score() {
+function Score({ route }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Score</Text>
+      <Text>Score: {route.params.score}</Text>
     </View>
     )
 }
