@@ -11,20 +11,21 @@ class DeckListView extends Component {
 
    componentDidMount() {
      getDecks().then((decks) => {
-           this.setState({ decks });
+        this.setState({ decks });
      });
    }
 
    onDeckPress = (deck) => {
-     this.props.navigation.navigate('DeckView', { title: deck.title, cards: deck.cards });
+     this.props.navigation.navigate('DeckView', deck);
    }
 
    render() {
      return (
        <ScrollView>
-        { Object.values(this.state.decks).map(deck => <TouchableOpacity onPress={() => this.onDeckPress(deck)} key={deck.title} style={{ height: 200}}>
-                                         <Deck title={deck.title} cards={deck.questions}/>
-                                       </TouchableOpacity>)}
+        { Object.values(this.state.decks).map(deck =>
+             <TouchableOpacity onPress={() => this.onDeckPress(deck)} key={deck.title} style={{ height: 200 }}>
+                <Deck title={deck.title} cards={deck.questions}/>
+             </TouchableOpacity>)}
       </ScrollView >
      )
    }

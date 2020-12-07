@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Button, Text } from "react-native";
+import { getDeck } from '../utils/storage';
 import Card from './Card';
 
 class Quiz extends Component {
@@ -7,8 +8,15 @@ class Quiz extends Component {
   state = {
     showAnswer: false,
     currentQuestion: 0,
-    cards: [{ question: 'question1', answer: 'answer1'}, { question: 'question2', answer: 'answer2'}], // TODO asyncStorage
+    deck: {},
     score: 0,
+  }
+
+  componentDidMount() {
+    const { deckId } = this.props.route.params;
+    getDeck(deckId).then(deck => {
+      this.setState({ deck });
+    });
   }
 
   updateScore = (isCorrect) => {
@@ -24,8 +32,8 @@ class Quiz extends Component {
   }
 
   isLastRound = () => {
-    const { currentQuestion, cards } = this.state;
-    return currentQuestion + 1 === cards.length;
+    const { currentQuestion, deck } = this.state;
+    return currentQuestion + 1 === deck.questions.length;
   }
 
   answer = (isCorrect) => {
@@ -39,19 +47,21 @@ class Quiz extends Component {
   }
 
   toScore = () => {
-    this.props.navigation.navigate('Score', { score: this.state.score });
+    const { deckId } = this.props.route.params;
+    this.props.navigation.navigate('Score', { score: this.state.score, deckId });
   }
 
   render() {
-    const { currentQuestion, cards, showAnswer } = this.state;
+    const { currentQuestion, deck, showAnswer } = this.state;
+    const { questions } = deck;
 
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
         <View style={{ flex: 1, alignSelf: 'flex-start'}}>
-          <Text style={{ width: 20, height: 20}}>{currentQuestion + 1}/{cards.length}</Text>
+          <Text style={{ width: 20, height: 20}}>{currentQuestion + 1}/{(questions || []).length}</Text>
         </View>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start'}}>
-          <Card showAnswer={showAnswer} card={cards[currentQuestion]} onFlip={this.flip}/>
+          <Card showAnswer={showAnswer} card={Object.keys(deck).length ? questions[currentQuestion] : []} onFlip={this.flip}/>
           <Button title="Correct" onPress={() => this.answer(true)}/>
           <Button title="Incorrect" onPress={() => this.answer(false)}/>
         </View>

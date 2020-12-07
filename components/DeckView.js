@@ -4,19 +4,19 @@ import Deck from './Deck';
 
 function DeckView({ route, navigation }) {
 
-  const { title, cards } = route.params;
+  const { title, questions } = route.params;
 
   function onAdd() {
     navigation.navigate('NewQuestion');
   }
 
   function onPlay() {
-    navigation.navigate('Quiz');
+    navigation.navigate('Quiz', { deckId: title });
   }
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-end'}}>
-     <Deck title={title} cards={cards}/>
+     <Deck title={title} cards={questions}/>
      <Button title="Add New Card" onPress={onAdd}/>
      <Button title="Start Quiz" onPress={onPlay}/>
     </View>
