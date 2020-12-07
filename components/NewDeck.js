@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View } from "react-native";
+import { saveDeckTitle } from '../utils/storage';
 import Form from './Form';
 
 class NewDeck extends Component {
@@ -14,8 +15,9 @@ class NewDeck extends Component {
   }
 
   select = () => {
-    // TODO store new deck
-    this.toHome();
+    saveDeckTitle(this.state.title).then(() => {
+      this.toHome();
+    });
   }
 
   toHome = () => {
@@ -26,7 +28,7 @@ class NewDeck extends Component {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
         <Form inputs={this.state.inputs} onSubmit={this.select} onSelect={this.onChange}/>
-     </View>
+      </View>
     )
   }
 }

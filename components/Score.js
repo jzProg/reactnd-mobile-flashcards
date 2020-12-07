@@ -8,8 +8,8 @@ function Score({ route, navigation }) {
   }
 
   function restart() {
-    const { deckId } = route.params;
-    navigation.replace('Quiz', { deckId });
+    const { title, questions } = route.params;
+    navigation.replace('Quiz', { title, questions });
   }
 
   return (

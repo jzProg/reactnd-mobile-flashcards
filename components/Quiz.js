@@ -8,14 +8,18 @@ class Quiz extends Component {
   state = {
     showAnswer: false,
     currentQuestion: 0,
-    deck: {},
     score: 0,
   }
 
   componentDidMount() {
-    const { deckId } = this.props.route.params;
-    getDeck(deckId).then(deck => {
-      this.setState({ deck });
+    this.props.navigation.addListener('focus', this.reset);
+  }
+
+  reset = () => {
+    this.setState({
+      showAnswer: false,
+      currentQuestion: 0,
+      score: 0
     });
   }
 
@@ -32,8 +36,9 @@ class Quiz extends Component {
   }
 
   isLastRound = () => {
-    const { currentQuestion, deck } = this.state;
-    return currentQuestion + 1 === deck.questions.length;
+    const { questions } = this.props.route.params;
+    const { currentQuestion } = this.state;
+    return currentQuestion + 1 === questions.length;
   }
 
   answer = (isCorrect) => {
@@ -47,21 +52,21 @@ class Quiz extends Component {
   }
 
   toScore = () => {
-    const { deckId } = this.props.route.params;
-    this.props.navigation.navigate('Score', { score: this.state.score, deckId });
+    const { title, questions } = this.props.route.params;
+    this.props.navigation.navigate('Score', { score: this.state.score, ...{ title, questions } });
   }
 
   render() {
-    const { currentQuestion, deck, showAnswer } = this.state;
-    const { questions } = deck;
+    const { currentQuestion, showAnswer } = this.state;
+    const { questions = [] } = this.props.route.params;
 
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
         <View style={{ flex: 1, alignSelf: 'flex-start'}}>
-          <Text style={{ width: 20, height: 20}}>{currentQuestion + 1}/{(questions || []).length}</Text>
+          <Text style={{ width: 20, height: 20}}>{currentQuestion + 1}/{questions.length}</Text>
         </View>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start'}}>
-          <Card showAnswer={showAnswer} card={Object.keys(deck).length ? questions[currentQuestion] : []} onFlip={this.flip}/>
+          <Card showAnswer={showAnswer} card={questions[currentQuestion] || []} onFlip={this.flip}/>
           <Button title="Correct" onPress={() => this.answer(true)}/>
           <Button title="Incorrect" onPress={() => this.answer(false)}/>
         </View>
