@@ -61,16 +61,22 @@ class Quiz extends Component {
     const { questions = [] } = this.props.route.params;
 
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <View style={{ flex: 1, alignSelf: 'flex-start'}}>
-          <Text style={{ width: 20, height: 20}}>{currentQuestion + 1}/{questions.length}</Text>
+      !questions.length ? (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+          <Text>No questions to play...</Text>
         </View>
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start'}}>
-          <Card showAnswer={showAnswer} card={questions[currentQuestion] || []} onFlip={this.flip}/>
-          <Button title="Correct" onPress={() => this.answer(true)}/>
-          <Button title="Incorrect" onPress={() => this.answer(false)}/>
+      ) : (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+          <View style={{ flex: 1, alignSelf: 'flex-start'}}>
+            <Text style={{ width: 20, height: 20}}>{currentQuestion + 1}/{questions.length}</Text>
+          </View>
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start'}}>
+            <Card showAnswer={showAnswer} card={questions[currentQuestion] || []} onFlip={this.flip}/>
+            <Button title="Correct" onPress={() => this.answer(true)}/>
+            <Button title="Incorrect" onPress={() => this.answer(false)}/>
+          </View>
         </View>
-     </View>
+      )
     )
   }
 }
