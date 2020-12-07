@@ -8,7 +8,7 @@ function Deck({ title, cards }) {
           {title}
         </Text>
         <Text>
-          contains {cards} cards
+          contains {cards.length} cards
         </Text>
       </View>
     )
