@@ -3,12 +3,14 @@ import { View, Text } from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { scheduleNextNotification } from './utils/notifications';
 import NewDeck from './components/NewDeck';
 import DeckListView from './components/DeckListView';
 import DeckView from './components/DeckView';
 import Score from './components/Score';
 import NewQuestion from './components/NewQuestion';
 import Quiz from './components/Quiz';
+
 
 const Tab = createBottomTabNavigator();
 const HomeStack = createStackNavigator();
@@ -46,6 +48,10 @@ function HomeStackScreen() {
 }
 
 export default class App extends React.Component {
+
+  componentDidMount() {
+    scheduleNextNotification();
+  }
 
   render() {
     return (

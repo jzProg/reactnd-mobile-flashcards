@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Button, Text } from "react-native";
+import { scheduleNextNotification, clearTodayNotification } from '../utils/notifications';
 import { getDeck } from '../utils/storage';
 import Card from './Card';
 
@@ -30,6 +31,7 @@ class Quiz extends Component {
         currentQuestion: !isLastRound ? state.currentQuestion + 1 : state.currentQuestion
       }), () => {
         if (isLastRound) {
+          clearTodayNotification().then(scheduleNextNotification);
           this.toScore();
         }
       });
