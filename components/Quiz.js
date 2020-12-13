@@ -29,7 +29,8 @@ class Quiz extends Component {
       const isLastRound = this.isLastRound();
       this.setState((state, props) => ({
         score: isCorrect ? state.score + 1 : state.score,
-        currentQuestion: !isLastRound ? state.currentQuestion + 1 : state.currentQuestion
+        currentQuestion: !isLastRound ? state.currentQuestion + 1 : state.currentQuestion,
+        showAnswer: false
       }), () => {
         if (isLastRound) {
           clearTodayNotification().then(scheduleNextNotification);
