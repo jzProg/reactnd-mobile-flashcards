@@ -10,7 +10,8 @@ class NewQuestion extends Component {
     inputs: [{ id: 'q_title', placeholder: 'question title'}, { id: 'q_answer', placeholder: 'question answer'}],
     q_title: '',
     q_answer: '',
-    submitText: 'Submit'
+    submitText: 'Submit',
+    error: false,
   }
 
   onChange = (id, text) => {
@@ -20,7 +21,10 @@ class NewQuestion extends Component {
   select = () => {
     const { deckId } = this.props.route.params;
     const { q_title, q_answer } = this.state;
-    if (!q_title || !q_answer) return;
+    if (!q_title || !q_answer) {
+      this.setState({ error: true });
+      return;
+    }
     addCardToDeck(deckId, { question: q_title, answer: q_answer }).then(() => {
       this.toHome();
     });
@@ -32,12 +36,13 @@ class NewQuestion extends Component {
   }
 
   render() {
-    const { inputs, submitText } = this.state;
-    
+    const { inputs, submitText, error } = this.state;
+
     return (
       <View style={styles.centered}>
         <Text style={styles.title}>Insert new card's details</Text>
         <Form inputs={inputs} submitText={submitText} onSubmit={this.select} onSelect={this.onChange}/>
+        { error && (<Text style={styles.errorText}>All fields are mandatory...</Text>) }
      </View>
     )
   }

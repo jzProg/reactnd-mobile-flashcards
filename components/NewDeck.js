@@ -9,7 +9,8 @@ class NewDeck extends Component {
   state = {
     inputs: [{ id: 'title', placeholder: 'deck title'}],
     title: '',
-    submitText: 'Create Deck'
+    submitText: 'Create Deck',
+    error: false,
   }
 
   onChange = (id, text) => {
@@ -18,7 +19,10 @@ class NewDeck extends Component {
 
   select = () => {
     const { title } = this.state;
-    if (!title) return;
+    if (!title) {
+      this.setState({ error: true });
+      return;
+    }
     saveDeckTitle(title).then(() => {
       this.setState({ title: ''});
       this.toHome(title);
@@ -30,12 +34,13 @@ class NewDeck extends Component {
   }
 
   render() {
-    const { inputs, submitText } = this.state;
+    const { inputs, submitText, error } = this.state;
 
     return (
       <View style={styles.centered}>
         <Text style={styles.title}>Insert new deck's title</Text>
         <Form inputs={inputs} submitText={submitText} onSubmit={this.select} onSelect={this.onChange}/>
+        { error && (<Text style={styles.errorText}>Title cannot be empty...</Text>) }
       </View>
     )
   }

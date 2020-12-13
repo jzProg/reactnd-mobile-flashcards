@@ -45,6 +45,9 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     padding: 2,
     marginTop: 4
+  },
+  errorText: {
+    color: 'red'
   }
 });
 

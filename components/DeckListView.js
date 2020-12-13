@@ -5,8 +5,6 @@ import { getDecks } from '../utils/storage';
 import { styles } from '../utils/styles';
 import Deck from './Deck';
 
-const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
-
 class DeckListView extends Component {
 
    state = {
