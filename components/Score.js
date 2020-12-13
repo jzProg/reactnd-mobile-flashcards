@@ -3,8 +3,8 @@ import { View, Text, Button } from "react-native";
 
 function Score({ route, navigation }) {
 
-  function toHome() {
-    navigation.navigate('DeckListView');
+  function back() {
+    navigation.navigate('DeckView');
   }
 
   function restart() {
@@ -16,7 +16,7 @@ function Score({ route, navigation }) {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <Text>Score: {route.params.score}</Text>
       <Button title="Restart Quiz" onPress={restart}/>
-      <Button title="to Home" onPress={toHome}/>
+      <Button title="Back to deck" onPress={back}/>
     </View>
     )
 }
