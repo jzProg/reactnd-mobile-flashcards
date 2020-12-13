@@ -26,7 +26,7 @@ class NewQuestion extends Component {
 
   toHome = () => {
     const { deckId } = this.props.route.params;
-    this.props.navigation.navigate('DeckView', { deckId });
+    this.props.navigation.navigate('Deck', { deckId });
   }
 
   render() {

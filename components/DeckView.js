@@ -23,7 +23,7 @@ class DeckView extends Component {
 
   onAdd = () => {
     const { deckId } = this.props.route.params;
-    this.props.navigation.navigate('NewQuestion', { deckId });
+    this.props.navigation.navigate('New Question', { deckId });
   }
 
   onPlay = () => {

@@ -22,7 +22,7 @@ class NewDeck extends Component {
   }
 
   toHome = () => {
-    this.props.navigation.navigate('DeckView', { deckId: this.state.title });
+    this.props.navigation.navigate('Deck', { deckId: this.state.title });
   }
 
   render() {

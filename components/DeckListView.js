@@ -22,7 +22,7 @@ class DeckListView extends Component {
    }
 
    onDeckPress = (deck) => {
-     this.props.navigation.navigate('DeckView', { deckId: deck.title });
+     this.props.navigation.navigate('Deck', { deckId: deck.title });
    }
 
    render() {

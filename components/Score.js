@@ -4,7 +4,7 @@ import { View, Text, Button } from "react-native";
 function Score({ route, navigation }) {
 
   function back() {
-    navigation.navigate('DeckView');
+    navigation.navigate('Deck');
   }
 
   function restart() {

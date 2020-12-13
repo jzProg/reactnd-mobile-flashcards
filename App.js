@@ -4,13 +4,14 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { scheduleNextNotification } from './utils/notifications';
+import { getDecks } from './utils/storage';
+import { Ionicons } from '@expo/vector-icons';
 import NewDeck from './components/NewDeck';
 import DeckListView from './components/DeckListView';
 import DeckView from './components/DeckView';
 import Score from './components/Score';
 import NewQuestion from './components/NewQuestion';
 import Quiz from './components/Quiz';
-
 
 const Tab = createBottomTabNavigator();
 const HomeStack = createStackNavigator();
@@ -19,17 +20,17 @@ function HomeStackScreen() {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen
-        name="DeckListView"
+        name="Deck List"
         component={DeckListView}
         options={{ tabBarLabel: 'Deck List' }}
       />
       <HomeStack.Screen
-        name="DeckView"
+        name="Deck"
         component={DeckView}
         options={{ tabBarLabel: 'Deck' }}
       />
       <HomeStack.Screen
-        name="NewQuestion"
+        name="New Question"
         component={NewQuestion}
         options={{ tabBarLabel: 'New Question' }}
       />
@@ -49,15 +50,27 @@ function HomeStackScreen() {
 
 export default class App extends React.Component {
 
-  componentDidMount() {
-    scheduleNextNotification();
-  }
-
   render() {
     return (
         <NavigationContainer>
-         <Tab.Navigator>
-           <Tab.Screen name="Decks" component={HomeStackScreen} />
+         <Tab.Navigator
+             screenOptions={({ route }) => ({
+                 tabBarIcon: ({ focused, color, size }) => {
+                   let iconName;
+                   if (route.name === 'Decks') {
+                     iconName = 'ios-folder-open';
+                   } else if (route.name === 'Add New Deck') {
+                     iconName = focused ? 'ios-add-circle' : 'ios-add-circle-outline';
+                   }
+                   return <Ionicons name={iconName} size={size} color={color} />;
+                },
+           }
+         )}
+         tabBarOptions={{
+           activeTintColor: 'green',
+           inactiveTintColor: 'gray',
+         }}>
+           <Tab.Screen name="Decks" component={HomeStackScreen}/>
            <Tab.Screen name="Add New Deck" component={NewDeck}/>
          </Tab.Navigator>
        </NavigationContainer>
