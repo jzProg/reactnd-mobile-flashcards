@@ -1,10 +1,10 @@
 # Mobile Flashcards
 
-My implementation of the final assessment project Udacity's React Native course. The app bootstrapped with [expo/create-react-native-app](https://github.com/expo/create-react-native-app)
+My implementation of the final assessment project Udacity's React Native course. The app bootstrapped with [expo/create-react-native-app](https://github.com/expo/create-react-native-app).
 
 ## Description
 
-An iOS mobile app that allows users to study collections of flashcards. The app will allow users to create decks of flashcards, add new cards to decks, and take quizzes.
+An iOS mobile app that allows users to study collections of flashcards. The app will allow users to create decks of flashcards, add new cards to decks and take quizzes.
 
 ## App Notifications
 
