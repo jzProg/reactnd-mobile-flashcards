@@ -1,6 +1,6 @@
 # Mobile Flashcards
 
-My implementation of the final assessment project Udacity's React Native course.
+My implementation of the final assessment project Udacity's React Native course. The app bootstrapped with [expo/create-react-native-app](https://github.com/expo/create-react-native-app)
 
 ## Description
 
