@@ -30,10 +30,12 @@ class NewDeck extends Component {
   }
 
   render() {
+    const { inputs, submitText } = this.state;
+
     return (
       <View style={styles.centered}>
         <Text style={styles.title}>Insert new deck's title</Text>
-        <Form inputs={this.state.inputs} submitText={this.state.submitText} onSubmit={this.select} onSelect={this.onChange}/>
+        <Form inputs={inputs} submitText={submitText} onSubmit={this.select} onSelect={this.onChange}/>
       </View>
     )
   }
