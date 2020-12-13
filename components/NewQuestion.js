@@ -20,6 +20,7 @@ class NewQuestion extends Component {
   select = () => {
     const { deckId } = this.props.route.params;
     const { q_title, q_answer } = this.state;
+    if (!q_title || !q_answer) return;
     addCardToDeck(deckId, { question: q_title, answer: q_answer }).then(() => {
       this.toHome();
     });

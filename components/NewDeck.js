@@ -17,13 +17,16 @@ class NewDeck extends Component {
   }
 
   select = () => {
-    saveDeckTitle(this.state.title).then(() => {
-      this.toHome();
+    const { title } = this.state;
+    if (!title) return;
+    saveDeckTitle(title).then(() => {
+      this.setState({ title: ''});
+      this.toHome(title);
     });
   }
 
-  toHome = () => {
-    this.props.navigation.navigate('Deck', { deckId: this.state.title });
+  toHome = (title) => {
+    this.props.navigation.navigate('Deck', { deckId: title });
   }
 
   render() {
