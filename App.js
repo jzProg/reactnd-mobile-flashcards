@@ -22,22 +22,22 @@ function HomeStackScreen() {
     <HomeStack.Navigator>
       <HomeStack.Screen
         name="Deck List"
-        options={{ headerStyle: { backgroundColor: 'black'}, headerTitleStyle: { color: 'white' }}}
+        options={{ headerStyle: { backgroundColor: 'black' }, headerTitleStyle: { color: 'white' }}}
         component={DeckListView}/>
       <HomeStack.Screen
         name="Deck"
-        options={{ headerStyle: { backgroundColor: 'black'}, headerTitleStyle: { color: 'white' }}}
+        options={{ headerStyle: { backgroundColor: 'black' }, headerTitleStyle: { color: 'white' }}}
         component={DeckView}/>
       <HomeStack.Screen
         name="New Question"
-        options={{ headerStyle: { backgroundColor: 'black'}, headerTitleStyle: { color: 'white' }}}
+        options={{ headerStyle: { backgroundColor: 'black' }, headerTitleStyle: { color: 'white' }}}
         component={NewQuestion}/>
       <HomeStack.Screen
         name="Quiz"
-        options={{ headerStyle: { backgroundColor: 'black'}, headerTitleStyle: { color: 'white' }}}
+        options={{ headerStyle: { backgroundColor: 'black' }, headerTitleStyle: { color: 'white' }}}
         component={Quiz}/>
       <HomeStack.Screen
-        options={{ headerStyle: { backgroundColor: 'black'}, headerTitleStyle: { color: 'white' }}}
+        options={{ headerStyle: { backgroundColor: 'black' }, headerTitleStyle: { color: 'white' }}}
         name="Score"
         component={Score}/>
     </HomeStack.Navigator>
@@ -49,7 +49,7 @@ function NewDeckScreen() {
     <HomeStack.Navigator>
       <HomeStack.Screen
         name="New Deck"
-        options={{ headerStyle: { backgroundColor: 'black'}, headerTitleStyle: { color: 'white' }}}
+        options={{ headerStyle: { backgroundColor: 'black' }, headerTitleStyle: { color: 'white' }}}
         component={NewDeck}/>
     </HomeStack.Navigator>
   );

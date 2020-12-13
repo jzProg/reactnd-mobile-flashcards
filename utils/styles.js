@@ -5,10 +5,17 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     padding: 5
   },
-  noDataText: {
-    fontSize: 20,
-    paddingTop: 20,
-    paddingBottom: 20
+  italic: {
+    fontStyle: 'italic'
+  },
+  title: {
+     fontSize: 20,
+     fontWeight: 'bold'
+  },
+  card: {
+    borderStyle: 'solid',
+    borderWidth: 2,
+    borderColor: 'gray'
   }
 });
 

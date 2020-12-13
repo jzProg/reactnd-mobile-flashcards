@@ -1,13 +1,14 @@
 import React from 'react';
 import { View, Text } from "react-native";
+import { styles } from '../utils/styles';
 
 function Deck({ title, cards }) {
   return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Text>
+        <Text style={styles.title}>
           {title}
         </Text>
-        <Text>
+        <Text style={styles.italic}>
           contains {cards.length} cards
         </Text>
       </View>

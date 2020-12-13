@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { ScrollView, TouchableOpacity } from "react-native";
 import { useIsFocused  } from '@react-navigation/native';
 import { getDecks } from '../utils/storage';
+import { styles } from '../utils/styles';
 import Deck from './Deck';
 
 class DeckListView extends Component {
@@ -31,7 +32,7 @@ class DeckListView extends Component {
         { Object.values(this.state.decks).map(deck =>
              <TouchableOpacity onPress={() => this.onDeckPress(deck)}
                                key={deck.title}
-                               style={{ height: 200 }}>
+                               style={[{ height: 200 }, styles.card]}>
                 <Deck title={deck.title} cards={deck.questions}/>
              </TouchableOpacity>)}
       </ScrollView >
