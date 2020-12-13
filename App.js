@@ -37,7 +37,7 @@ function HomeStackScreen() {
         options={{ headerStyle: { backgroundColor: 'black' }, headerTitleStyle: { color: 'white' }}}
         component={Quiz}/>
       <HomeStack.Screen
-        options={{ headerStyle: { backgroundColor: 'black' }, headerTitleStyle: { color: 'white' }}}
+        options={{ headerStyle: { backgroundColor: 'black' }, headerTitleStyle: { color: 'white' }, headerLeft: null}}
         name="Score"
         component={Score}/>
     </HomeStack.Navigator>
