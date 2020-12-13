@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Button, Text } from "react-native";
+import { SafeAreaView , Button, Text } from "react-native";
 import { getDeck } from '../utils/storage';
 import Deck from './Deck';
 
@@ -35,11 +35,11 @@ class DeckView extends Component {
     const { title, questions = [] } = this.state.deck;
 
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-end'}}>
+      <SafeAreaView  style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-end'}}>
         <Deck title={title} cards={questions}/>
         <Button title="Add New Card" onPress={this.onAdd}/>
         <Button title="Start Quiz" onPress={this.onPlay}/>
-      </View>
+      </SafeAreaView>
     )
   }
 }

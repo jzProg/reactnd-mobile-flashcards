@@ -16,6 +16,31 @@ const styles = StyleSheet.create({
     borderStyle: 'solid',
     borderWidth: 2,
     borderColor: 'gray'
+  },
+  correctButton: {
+    alignItems: 'center',
+    borderStyle: 'solid',
+    borderWidth: 2,
+    backgroundColor: 'green',
+    padding: 10,
+    width: 200,
+    marginTop: 40
+  },
+  incorrectButton: {
+    alignItems: 'center',
+    borderStyle: 'solid',
+    borderWidth: 2,
+    backgroundColor: 'red',
+    padding: 10,
+    width: 200,
+    marginTop: 4
+  },
+  input: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 2,
+    padding: 2,
+    marginTop: 4
   }
 });
 

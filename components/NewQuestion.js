@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { View } from "react-native";
+import { View, Text } from "react-native";
 import { addCardToDeck } from '../utils/storage';
+import { styles } from '../utils/styles';
 import Form from './Form';
 
 class NewQuestion extends Component {
@@ -32,6 +33,7 @@ class NewQuestion extends Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <Text style={styles.title}>Insert new card's details</Text>
         <Form inputs={this.state.inputs} submitText={this.state.submitText} onSubmit={this.select} onSelect={this.onChange}/>
      </View>
     )

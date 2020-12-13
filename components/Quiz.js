@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, Button, Text } from "react-native";
+import { SafeAreaView, View, TouchableOpacity, Text } from "react-native";
 import { scheduleNextNotification, clearTodayNotification } from '../utils/notifications';
 import { getDeck } from '../utils/storage';
+import { styles } from '../utils/styles';
 import Card from './Card';
 
 class Quiz extends Component {
@@ -68,16 +69,20 @@ class Quiz extends Component {
           <Text>No questions to play...</Text>
         </View>
       ) : (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
           <View style={{ flex: 1, alignSelf: 'flex-start'}}>
-            <Text style={{ width: 20, height: 20}}>{currentQuestion + 1}/{questions.length}</Text>
+            <Text style={{ width: 30, height: 30}}>{currentQuestion + 1}/{questions.length}</Text>
           </View>
-          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-start'}}>
+          <View style={{ flex: 2, alignItems: 'center', justifyContent: 'flex-start'}}>
             <Card showAnswer={showAnswer} card={questions[currentQuestion] || []} onFlip={this.flip}/>
-            <Button title="Correct" onPress={() => this.answer(true)}/>
-            <Button title="Incorrect" onPress={() => this.answer(false)}/>
+            <TouchableOpacity style={styles.correctButton} onPress={() => this.answer(true)}>
+              <Text style={{ color: 'white'}}>Correct</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.incorrectButton} onPress={() => this.answer(false)}>
+              <Text style={{ color: 'white'}}>Incorrect</Text>
+            </TouchableOpacity>
           </View>
-        </View>
+        </SafeAreaView>
       )
     )
   }
