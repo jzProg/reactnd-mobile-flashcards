@@ -4,6 +4,8 @@ My implementation of the final assessment project Udacity's React Native course.
 
 ## Description
 
+<img src="https://img.shields.io/badge/react_native%20-%2320232a.svg?&style=for-the-badge&logo=react&logoColor=%2361DAFB"/>
+
 An iOS mobile app that allows users to study collections of flashcards. The app will allow users to create decks of flashcards, add new cards to decks, and take quizzes.
 
 ## App Notifications
