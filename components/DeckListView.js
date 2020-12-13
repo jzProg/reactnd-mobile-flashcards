@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
-import { ScrollView, TouchableOpacity, Text, View } from "react-native";
+import { ScrollView, TouchableOpacity, Text, View, Animated } from "react-native";
 import { useIsFocused  } from '@react-navigation/native';
 import { getDecks } from '../utils/storage';
 import { styles } from '../utils/styles';
 import Deck from './Deck';
 
+const AnimatedTouchable = Animated.createAnimatedComponent(TouchableOpacity);
+
 class DeckListView extends Component {
 
    state = {
      decks: {},
+     fontSize: new Animated.Value(20),
+     selected: ''
    }
 
    componentDidMount() {
@@ -18,11 +22,13 @@ class DeckListView extends Component {
 
    fetchInitialData = () => {
      getDecks().then((decks) => {
-        this.setState({ decks });
+        this.setState({ decks, selected: '' });
      });
    }
 
    onDeckPress = (deck) => {
+     this.setState({ selected: deck.title });
+     Animated.spring(this.state.fontSize, { toValue: 40, speed: 5, useNativeDriver: false }).start();
      this.props.navigation.navigate('Deck', { deckId: deck.title });
    }
 
@@ -39,7 +45,7 @@ class DeckListView extends Component {
                <TouchableOpacity onPress={() => this.onDeckPress(deck)}
                                  key={deck.title}
                                  style={[{ height: 200 }, styles.card]}>
-                  <Deck title={deck.title} cards={deck.questions}/>
+                  <Deck title={deck.title} cards={deck.questions} font={this.state.fontSize} selected={this.state.selected}/>
                </TouchableOpacity>)}
         </ScrollView>
        )

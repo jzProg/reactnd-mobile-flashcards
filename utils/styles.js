@@ -9,8 +9,7 @@ const styles = StyleSheet.create({
     fontStyle: 'italic'
   },
   title: {
-     fontSize: 20,
-     fontWeight: 'bold'
+     fontWeight: 'bold',
   },
   centered: {
     flex: 1,
