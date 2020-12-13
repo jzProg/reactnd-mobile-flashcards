@@ -12,6 +12,10 @@ An iOS mobile app that allows users to study collections of flashcards. The app 
 
 The app will show a notification to the user at 17:00 everyday, if no quiz is completed that day.
 
+## Persistence
+
+The app's data (decks, scheduled notifications) are stored to the `asyncStorage`.
+
 ## Testing Devices
 
 :heavy_check_mark: Iphone XR (iOS 14.2)
