@@ -16,7 +16,7 @@ function Score({ route, navigation }) {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <Text>Score: {route.params.score}</Text>
       <Button title="Restart Quiz" onPress={restart}/>
-      <Button title="Back to deck" onPress={back}/>
+      <Button title="Back to Deck" onPress={back}/>
     </View>
     )
 }

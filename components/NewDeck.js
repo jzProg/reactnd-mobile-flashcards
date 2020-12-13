@@ -7,7 +7,8 @@ class NewDeck extends Component {
 
   state = {
     inputs: [{ id: 'title', placeholder: 'deck title'}],
-    title: ''
+    title: '',
+    submitText: 'Create Deck'
   }
 
   onChange = (id, text) => {
@@ -21,13 +22,13 @@ class NewDeck extends Component {
   }
 
   toHome = () => {
-    this.props.navigation.navigate('DeckListView');
+    this.props.navigation.navigate('DeckView', { deckId: this.state.title });
   }
 
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Form inputs={this.state.inputs} onSubmit={this.select} onSelect={this.onChange}/>
+        <Form inputs={this.state.inputs} submitText={this.state.submitText} onSubmit={this.select} onSelect={this.onChange}/>
       </View>
     )
   }

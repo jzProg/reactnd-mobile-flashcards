@@ -8,7 +8,8 @@ class NewQuestion extends Component {
   state = {
     inputs: [{ id: 'q_title', placeholder: 'question title'}, { id: 'q_answer', placeholder: 'question answer'}],
     q_title: '',
-    q_answer: ''
+    q_answer: '',
+    submitText: 'Submit'
   }
 
   onChange = (id, text) => {
@@ -31,7 +32,7 @@ class NewQuestion extends Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <Form inputs={this.state.inputs} onSubmit={this.select} onSelect={this.onChange}/>
+        <Form inputs={this.state.inputs} submitText={this.state.submitText} onSubmit={this.select} onSelect={this.onChange}/>
      </View>
     )
   }
