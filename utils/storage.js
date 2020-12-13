@@ -13,6 +13,16 @@ export function getDecks() {
     });
 }
 
+export function deleteDeck(id) {
+  return AsyncStorage.getItem(DECKS_STORAGE_KEY)
+    .then(decks => {
+      let deckObj = JSON.parse(decks);
+      deckObj[id] = undefined;
+      delete deckObj[id];
+      AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(deckObj));
+    });
+}
+
 export function getDeck(id) {
   return AsyncStorage.getItem(DECKS_STORAGE_KEY)
     .then(decks => JSON.parse(decks)[id]);

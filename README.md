@@ -16,6 +16,10 @@ The app will show a notification to the user at 17:00 everyday, if no quiz is co
 
 The app's data (decks, scheduled notifications) are stored to the `asyncStorage`.
 
+## Extra Features
+
+- Delete deck functionality
+
 ## Testing Devices
 
 :heavy_check_mark: Iphone XR (iOS 14.2)

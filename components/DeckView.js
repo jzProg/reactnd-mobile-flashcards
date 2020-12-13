@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { SafeAreaView , Button, Text } from "react-native";
-import { getDeck } from '../utils/storage';
+import { getDeck, deleteDeck } from '../utils/storage';
 import Deck from './Deck';
 
 class DeckView extends Component {
@@ -31,6 +31,13 @@ class DeckView extends Component {
     this.props.navigation.navigate('Quiz', deck);
   }
 
+  removeDeck = () => {
+    const { deckId } = this.props.route.params;
+    deleteDeck(deckId).then((deck) => {
+       this.props.navigation.navigate('Deck List', deck);
+    });
+  }
+
   render() {
     const { title, questions = [] } = this.state.deck;
 
@@ -39,6 +46,7 @@ class DeckView extends Component {
         <Deck title={title} cards={questions}/>
         <Button title="Add New Card" onPress={this.onAdd}/>
         <Button title="Start Quiz" onPress={this.onPlay}/>
+        <Button color='red' title="Delete Deck" onPress={this.removeDeck}/>
       </SafeAreaView>
     )
   }
