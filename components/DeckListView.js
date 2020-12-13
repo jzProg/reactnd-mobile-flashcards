@@ -33,7 +33,9 @@ class DeckListView extends Component {
    }
 
    render() {
-     const deckArray = Object.values(this.state.decks);
+     const { decks, fontSize, selected } = this.state;
+     const deckArray = Object.values(decks);
+     
      return (
        !deckArray.length ? (
          <View style={styles.centered}>
@@ -45,7 +47,7 @@ class DeckListView extends Component {
                <TouchableOpacity onPress={() => this.onDeckPress(deck)}
                                  key={deck.title}
                                  style={[{ height: 200 }, styles.card]}>
-                  <Deck title={deck.title} cards={deck.questions} font={this.state.fontSize} selected={this.state.selected}/>
+                  <Deck title={deck.title} cards={deck.questions} font={fontSize} selected={selected}/>
                </TouchableOpacity>)}
         </ScrollView>
        )
