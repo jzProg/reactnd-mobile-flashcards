@@ -33,7 +33,7 @@ class NewQuestion extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <View style={styles.centered}>
         <Text style={styles.title}>Insert new card's details</Text>
         <Form inputs={this.state.inputs} submitText={this.state.submitText} onSubmit={this.select} onSelect={this.onChange}/>
      </View>

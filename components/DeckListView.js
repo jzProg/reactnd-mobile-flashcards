@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, TouchableOpacity } from "react-native";
+import { ScrollView, TouchableOpacity, Text, View } from "react-native";
 import { useIsFocused  } from '@react-navigation/native';
 import { getDecks } from '../utils/storage';
 import { styles } from '../utils/styles';
@@ -27,16 +27,23 @@ class DeckListView extends Component {
    }
 
    render() {
+     const deckArray = Object.values(this.state.decks);
      return (
-       <ScrollView>
-        { Object.values(this.state.decks).map(deck =>
-             <TouchableOpacity onPress={() => this.onDeckPress(deck)}
-                               key={deck.title}
-                               style={[{ height: 200 }, styles.card]}>
-                <Deck title={deck.title} cards={deck.questions}/>
-             </TouchableOpacity>)}
-      </ScrollView >
-     )
+       !deckArray.length ? (
+         <View style={styles.centered}>
+           <Text>No available decks...</Text>
+         </View>
+        ) : (
+         <ScrollView>
+          { Object.values(this.state.decks).map(deck =>
+               <TouchableOpacity onPress={() => this.onDeckPress(deck)}
+                                 key={deck.title}
+                                 style={[{ height: 200 }, styles.card]}>
+                  <Deck title={deck.title} cards={deck.questions}/>
+               </TouchableOpacity>)}
+        </ScrollView>
+       )
+      )
    }
 }
 

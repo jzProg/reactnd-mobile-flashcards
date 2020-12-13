@@ -15,7 +15,7 @@ function Score({ route, navigation }) {
   }
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+    <View style={styles.centered}>
       <FontAwesome name='star' size={60} color={'red'} />
       <Text style={styles.title}>Score: {route.params.score}</Text>
       <TouchableOpacity style={styles.correctButton} onPress={restart}>

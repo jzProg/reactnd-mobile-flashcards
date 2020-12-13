@@ -12,6 +12,11 @@ const styles = StyleSheet.create({
      fontSize: 20,
      fontWeight: 'bold'
   },
+  centered: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
   card: {
     borderStyle: 'solid',
     borderWidth: 2,

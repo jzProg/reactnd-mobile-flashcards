@@ -4,7 +4,7 @@ import { styles } from '../utils/styles';
 
 function Deck({ title, cards }) {
   return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <View style={styles.centered}>
         <Text style={styles.title}>
           {title}
         </Text>

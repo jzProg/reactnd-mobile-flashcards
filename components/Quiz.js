@@ -65,11 +65,11 @@ class Quiz extends Component {
 
     return (
       !questions.length ? (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <View style={styles.centered}>
           <Text>No questions to play...</Text>
         </View>
       ) : (
-        <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <SafeAreaView style={styles.centered}>
           <View style={{ flex: 1, alignSelf: 'flex-start'}}>
             <Text style={{ width: 30, height: 30}}>{currentQuestion + 1}/{questions.length}</Text>
           </View>
