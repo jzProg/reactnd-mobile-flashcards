@@ -43,10 +43,6 @@ export function scheduleNextNotification() {
             .then(({ status }) => {
               if (status === 'granted') {
                 Notifications.cancelAllScheduledNotificationsAsync();
-                let date = new Date();
-                date.setDate(date.getDate());
-                date.setHours(24);
-                date.setMinutes(32);
                 Notifications.scheduleNotificationAsync(createNotification());
                 AsyncStorage.setItem(NOTIFICATION_STORAGE_KEY, JSON.stringify(true));
               }
